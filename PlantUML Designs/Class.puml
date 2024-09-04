@@ -1,0 +1,22 @@
+@startuml example
+
+' Hola, soy Abraham :)
+
+abstract Vehicle {
+	+Engine
+	+Speed
+	+Speakers
+	+Fuel
+}
+
+class Car implements Vehicle {
+	+wheels
+	+gasoline
+}
+
+class Airplane implements Vehicle {
+	+Radar
+	+FlyingSystem
+}
+
+@enduml

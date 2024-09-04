@@ -1,4 +1,4 @@
 # UPanas
-Christian (Team Lead)
-Josue
-Abraham
+- Christian (Team Lead)
+- Josue
+- Abraham

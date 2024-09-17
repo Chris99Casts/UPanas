@@ -14,5 +14,6 @@
   "idf.portWin": "COM3",
   "idf.pythonBinPathWin": "d:\\AppData\\ESP-IDF\\tools\\python_env\\idf5.3_py3.11_env\\Scripts\\python.exe",
   "idf.toolsPathWin": "d:\\AppData\\ESP-IDF\\tools",
-  "idf.flashType": "UART"
+  "idf.flashType": "UART",
+  "idf.gitPathWin": "d:\\AppData\\ESP-IDF\\tools\\tools\\idf-git\\2.39.2\\cmd\\git.exe"
 }

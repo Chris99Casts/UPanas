@@ -59,6 +59,8 @@
 
 #include "taskClass.hpp"
 #include "taskClass.cpp"
+#include "LedTask.hpp"
+#include "LedTask.cpp"
 
 extern "C" {
 

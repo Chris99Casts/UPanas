@@ -4,9 +4,11 @@
 
 #include <stdlib.h>
 #include <inttypes.h>
+#include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"
+#include "freertos/portmacro.h"
 #include "driver/gpio.h"
 
 extern "C" {
@@ -25,12 +27,12 @@ class Task {
 
 		void start();
 		void stop();
-}
+};
 
 class LedTask : public Task {
 	private:
 		int ledPin;
-		TikcType_t delayMs;
+		TickType_t delayMs;
 	public:
 		LedTask(
 			const char* name, uint32_t stack_size, UBaseType_t prio,
@@ -38,7 +40,8 @@ class LedTask : public Task {
 		);
 
 		void toggleLed(int pin);
-}
+		virtual void taskFunction();
+};
 
 }
 

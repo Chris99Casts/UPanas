@@ -22,36 +22,23 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #pragma once
-#ifndef TASKCLASS_H
-#define TASKCLASS_H
+#ifndef DELAYTASK_HPP
+#define DELAYTASK_HPP
 
-#include <stdlib.h>
-#include <inttypes.h>
-#include <stdio.h>
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "freertos/queue.h"
-#include "freertos/portmacro.h"
-#include "driver/gpio.h"
+#include "taskClass.hpp"
 
 extern "C" {
-
-class Task {
+class DelayTask : public Task {
 	private:
-		const char*  taskName;
-		uint32_t     stackSize;
-		UBaseType_t  priority;
-		TaskHandle_t taskHandle;
+		TickType_t delay;
 	public:
-		Task(const char* name, uint32_t stack_size, UBaseType_t prio);
-		~Task();
+		DelayTask(
+			const char* name, uint32_t stack_size, UBaseType_t prio,
+			TickType_t delay
+		);
 
-		virtual void taskFunction() = 0;
-
-		void start();
-		void stop();
+		virtual void taskFunction() override;
 };
-
 }
 
 #endif

@@ -11,20 +11,18 @@ void taskFunctionWrapper(void* taskClass) {
 	caller->taskFunction();
 }
 
-Task::Task(const char* name, uint32_t stack_size, UBaseType_t prio) {
-	taskName  = name;
-	stackSize = stack_size;
-	priority  = prio;
-	taskHandle = NULL;
-}
+Task::Task(const char* name, uint32_t stack_size, UBaseType_t prio) :
+taskName(name), stackSize(stack_size), priority(prio), taskHandle(NULL)
+{ }
 Task::~Task() {
 	vTaskSuspend(taskHandle);
-	// xTaskDestroy(taskHandle);
+	vTaskDelete(taskHandle);
 }
 void Task::start() {
 	if (taskHandle == NULL) {
 		xTaskCreate(
-			taskFunctionWrapper,
+			// taskFunctionWrapper,
+			[] (void * args) {((Task*)args)->taskFunction();},
 			taskName,
 			stackSize,
 			this,
